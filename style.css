@@ -1,4 +1,4 @@
-/*index*/
+/*Index*/
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -80,4 +80,45 @@ th, td {
 th {
     background-color: #4caf50;
     color: #fff;
+}
+
+
+/*Ver Registro*/
+/* Contenido de style.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+h2 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #4caf50;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #4caf50;
+}
+
+tr:hover {
+    background-color: #4caf50;
+}
+
+td:first-child {
+    font-weight: bold;
+}
+
+.no-records {
+    color: #555;
+    margin-top: 20px;
 }
