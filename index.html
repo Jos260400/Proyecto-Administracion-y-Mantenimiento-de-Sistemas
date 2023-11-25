@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Horas</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
 </head>
 <body>
     <div class="container">
@@ -33,3 +35,8 @@
     <script src="script.js"></script>
 </body>
 </html>
+
+<!-- Configuración del servidor -->
+<FilesMatch "\.(js|css)$">
+    Header set Cache-Control "max-age=31536000, public"
+</FilesMatch>

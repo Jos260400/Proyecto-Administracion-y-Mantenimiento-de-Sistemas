@@ -11,16 +11,16 @@
 <?php
 include 'config.php';
 
-// Verifica si el formulario fue enviado
+// Verificar si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recupera los datos del formulario
+    // Recuperar los datos del formulario
     $carne = $_POST["carne"];
     $nombre = $_POST["nombre"];
     $fechaInicio = $_POST["fechaInicio"];
     $fechaFin = $_POST["fechaFin"];
     $totalHoras = $_POST["totalHoras"];
 
-    // Procesa y almacena los datos en la base de datos
+    // Procesar y almacenar los datos en la base de datos
     $sql = "INSERT INTO registro_horas (carne, nombre, fecha_inicio, fecha_fin, total_horas)
             VALUES ('$carne', '$nombre', '$fechaInicio', '$fechaFin', '$totalHoras')";
 
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Muestra un botón para ver todos los registros
+// Mostrar un botón para ver todos los registros
 echo '<form method="get" action="ver_registros.php">';
 echo '<button type="submit">Ver todos los registros</button>';
 echo '</form>';
