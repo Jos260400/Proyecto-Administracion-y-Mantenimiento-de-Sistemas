@@ -1,1 +1,0 @@
-# Proyecto-Administracion-y-Mantenimiento-de-Sistemas
