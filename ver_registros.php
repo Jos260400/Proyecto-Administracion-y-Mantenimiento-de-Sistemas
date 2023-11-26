@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-    
+
 <?php
 include 'config.php';
 
@@ -21,7 +21,10 @@ if ($result->num_rows > 0) {
     echo "<table border='1'>";
     echo "<tr><th>ID</th><th>Carne</th><th>Nombre</th><th>Fecha y Hora de Inicio</th><th>Fecha y Hora de Fin</th><th>Total de Horas</th><th>Acciones</th></tr>";
 
-    // Mostrar cada fila de la tabla
+    // Inicializar la variable para almacenar la suma de horas
+    $totalHorasSum = 0;
+
+    // Mostrar cada fila de la tabla y sumar las horas
     while($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row["id"] . "</td>";
@@ -30,11 +33,20 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row["fecha_inicio"] . "</td>";
         echo "<td>" . $row["fecha_Fin"] . "</td>";
         echo "<td>" . $row["total_Horas"] . "</td>";
-        echo "<td><button onclick='eliminarRegistro(" . $row["id"] . ", this)'>Eliminar</button></td>";
+        echo "<td>";
+        echo "<button onclick='eliminarRegistro(" . $row["id"] . ", this)'>Eliminar</button>";
+        echo "<button onclick='modificarRegistro(" . $row["id"] . ")'>Modificar</button>";
+        echo "</td>";
         echo "</tr>";
+
+        // Sumar las horas al total
+        $totalHorasSum += $row["total_Horas"];
     }
 
     echo "</table>";
+
+    // Mostrar el total de horas fuera del bucle
+    echo "<p>Total de Horas: " . $totalHorasSum . "</p>";
 } else {
     echo "No hay registros para mostrar.";
 }
@@ -43,7 +55,10 @@ $conn->close();
 ?>
 
 <!-- Botón para regresar a index.html -->
-<a href="index.html"><button>Regresar a Index</button></a>
+<a href="index.html"><button>Ingresar más datos</button></a>
+
+<!-- Botón para ir a ver_graficas.php -->
+<a href="ver_graficas.php"><button>Ver Gráficas</button></a>
 
 <script>
     function eliminarRegistro(id, button) {
@@ -63,6 +78,12 @@ $conn->close();
             });
         }
     }
+
+    function modificarRegistro(id) {
+        // Redirigir a la página de edición con el ID del registro
+        window.location.href = 'editar_registro.php?id=' + id;
+    }
 </script>
+
 </body>
 </html>
