@@ -1,13 +1,22 @@
-function calcularTotalHoras() {
-    const fechaInicio = new Date(document.getElementById('fechaInicio').value);
-    const fechaFin = new Date(document.getElementById('fechaFin').value);
+// script.test.js
 
-    // Calcular la diferencia en milisegundos
-    const diferenciaMilisegundos = fechaFin - fechaInicio;
+// Importa la función que deseas probar desde script.js
+import { calcularTotalHoras } from './script';
 
-    // Convertir la diferencia a horas y redondear
-    const totalHoras = Math.round(diferenciaMilisegundos / (1000 * 60 * 60));
+// Prueba unitaria para la función calcularTotalHoras
+describe('Calcular Total de Horas', () => {
+    test('Debería calcular el total de horas correctamente', () => {
+        // Simula el DOM necesario para la prueba
+        document.body.innerHTML = `
+            <input type="datetime-local" id="fechaInicio" value="2023-01-01T12:00">
+            <input type="datetime-local" id="fechaFin" value="2023-01-01T15:30">
+            <input type="number" id="totalHoras" name="totalHoras" readonly>
+        `;
 
-    // Mostrar el total de horas en el campo correspondiente
-    document.getElementById('totalHoras').value = totalHoras;
-}
+        // Ejecuta la función que deseas probar
+        calcularTotalHoras();
+
+        // Verifica que el total de horas se haya calculado correctamente
+        expect(document.getElementById('totalHoras').value).toBe('3.5');
+    });
+});
