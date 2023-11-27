@@ -56,27 +56,11 @@ $conn->close();
     <input type="datetime-local" id="fechaFin" name="fechaFin" value="<?php echo $fechaFin; ?>" required>
 
     <label for="totalHoras">Total de horas:</label>
-    <input type="number" id="totalHoras" name="totalHoras" value="<?php echo $totalHoras; ?>" readonly>
+    <input type="number" id="totalHoras" name="totalHoras" value="<?php echo $totalHoras; ?>" required>
 
-    <button type="button" onclick="calcularTotalHoras()">Calcular Total de Horas</button>
     <button type="submit">Guardar Cambios</button>
 </form>
 
-<script>
-    function calcularTotalHoras() {
-        const fechaInicio = new Date(document.getElementById('fechaInicio').value);
-        const fechaFin = new Date(document.getElementById('fechaFin').value);
-
-        // Calcular la diferencia en milisegundos
-        const diferenciaMilisegundos = fechaFin - fechaInicio;
-
-        // Convertir la diferencia a horas y redondear
-        const totalHoras = Math.round(diferenciaMilisegundos / (1000 * 60 * 60));
-
-        // Mostrar el total de horas en el campo correspondiente
-        document.getElementById('totalHoras').value = totalHoras;
-    }
-</script>
 
 </body>
 </html>
